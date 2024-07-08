@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Nos Menus</h2>
+
+<div>
+  <form method="GET"  action="{{ url_for('menu.recherche_menus') }}" class="my-3">
+    <div class="mb-3">
+      <input type="text" class="form-control"  placeholder="Rechercher par nom, type de cuisine ou prix" name="criteres" aria-describedby="emailHelp" value="{{criteres }}">
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+</div>
+<div class="row">
+  <!-- Liste des menus avec des liens vers les détails des plats -->
+ {% for menu  in menus  %}
+ <div class="col-md-4 mb-4">
+  <div class="card">
+      <div class="card-body">
+          <h5 class="card-title">{{ menu.nom }}</h5>
+          <p class="card-text">{{ menu.description }}</p>
+          <p class="card-text"><strong>Prix moyen: </strong>{{ menu.prix }}</p>
+          <a href="{{ url_for('menu.details', menu_id=menu.id) }}" class="btn btn-primary">Voir détails</a>
+      </div>
+  </div>
+</div>
+ {% endfor %}
+ 
+</div>
+{% endblock %}

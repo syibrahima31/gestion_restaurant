@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Détails du Plat</h2>
+<!-- Affichage des détails du plat -->
+<div class="card text-start">
+  <div class="card-body">
+    <h4 class="card-title my-2">{{menu.nom}}</h4>
+    <p class="card-text">
+      {% for plat in plats %}
+    <ul>
+      <li>{{plat.nom}}</li>
+      <li>{{plat.ingredients}}</li>
+      <li>{{plat.prix}}</li>
+    </ul>
+    <hr>
+    {% endfor %}
+
+    </p>
+  </div>
+</div>
+
+
+<form method="post" action="{{ url_for('menu.ajout_panier', menu_id=menu.id) }}">
+  <label for="quantite">Quantité :</label>
+  <input type="number" name="quantite" min="1" value="1">
+  <button type="submit">Ajouter au panier</button>
+</form>
+{% endblock %}

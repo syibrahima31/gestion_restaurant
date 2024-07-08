@@ -1,0 +1,1 @@
+from . import menu_views, auth_views, admin_views

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Panier</h2>
+<div class="row">
+  {% for article in articles %}
+  <div class="col-md-4 mb-4">
+    <div class="card-body">
+      <strong>Nom : </strong> {{article["menu"].nom}}
+      <hr>
+      <strong>Descption : </strong> {{article["menu"].description}}
+      <hr>
+      <strong>Prix : </strong>  {{article["menu"].prix}}
+      <hr>
+      <strong>Quantite : </strong>  {{article["quantite"]}}
+    </div>
+  </div>
+  {% endfor %}
+
+</div>
+<form action="" method="post">
+  <button type="submit" class="btn btn-primary">Finaliser la Commande</button>
+</form>
+{% endblock %}
